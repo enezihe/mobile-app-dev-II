@@ -1,5 +1,7 @@
+# OS / editor
 .DS_Store
-build/
+
+# Xcode build artifacts
 DerivedData/
+build/
 xcuserdata/
-*.xcuserstate
