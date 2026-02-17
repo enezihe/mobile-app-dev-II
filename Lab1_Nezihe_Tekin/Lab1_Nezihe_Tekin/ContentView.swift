@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 enum Answer {
     case prime
@@ -15,12 +16,24 @@ struct ContentView: View {
     @State private var selectedAnswer: Answer? = nil
     @State private var showFeedback: Bool = false
 
+    @State private var timeRemaining: Int = 5
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     var body: some View {
         VStack(spacing: 24) {
             Text("Prime Checker")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.top, 20)
+
+            HStack {
+                Image(systemName: "clock.fill")
+                Text("Time: \(timeRemaining)s")
+                Spacer()
+                Text("Attempt: \(attemptCount)")
+            }
+            .font(.headline)
+            .padding(.horizontal)
 
             Text("\(currentNumber)")
                 .font(.system(size: 90, weight: .heavy))
@@ -40,35 +53,68 @@ struct ContentView: View {
             Spacer()
         }
         .padding()
+        .animation(.easeInOut(duration: 0.25), value: showFeedback)
+        .onReceive(timer) { _ in
+            tick()
+        }
     }
 
     private func answerRow(title: String, answer: Answer) -> some View {
         Button {
             submit(answer)
         } label: {
-            Text(title)
-                .font(.title3)
-                .fontWeight(.semibold)
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.blue.opacity(0.9))
-                .foregroundStyle(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
+            HStack {
+                Text(title)
+                    .font(.title3)
+                    .fontWeight(.semibold)
+
+                Spacer()
+
+                if showFeedback, selectedAnswer != nil {
+                    let ok = isAnswerCorrect(answer)
+                    Image(systemName: ok ? "checkmark.circle.fill" : "xmark.circle.fill")
+                        .font(.title2)
+                        .foregroundStyle(ok ? .green : .red)
+                        .opacity(selectedAnswer == answer ? 1.0 : 0.9)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color.blue.opacity(0.9))
+            .foregroundStyle(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 16))
         }
         .buttonStyle(.plain)
         .disabled(selectedAnswer != nil)
     }
 
-    // MARK: - Submit (evaluate + score)
+    private func tick() {
+        timeRemaining -= 1
+        if timeRemaining <= 0 {
+            timeRemaining = 5
+        }
+    }
+
     private func submit(_ answer: Answer) {
         selectedAnswer = answer
         showFeedback = true
         recordResult(isCorrect: isAnswerCorrect(answer))
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            nextQuestion()
+        }
     }
 
     private func recordResult(isCorrect: Bool) {
         attemptCount += 1
         if isCorrect { correctCount += 1 } else { wrongCount += 1 }
+    }
+
+    private func nextQuestion() {
+        currentNumber = Int.random(in: 1...200)
+        selectedAnswer = nil
+        showFeedback = false
+        timeRemaining = 5
     }
 
     private func isAnswerCorrect(_ answer: Answer) -> Bool {
@@ -79,7 +125,6 @@ struct ContentView: View {
         }
     }
 
-    // Prime Check
     private func isPrime(_ n: Int) -> Bool {
         if n < 2 { return false }
         if n == 2 { return true }
