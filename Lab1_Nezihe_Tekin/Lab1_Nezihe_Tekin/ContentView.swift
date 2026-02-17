@@ -8,6 +8,13 @@ enum Answer {
 struct ContentView: View {
     @State private var currentNumber: Int = Int.random(in: 1...200)
 
+    @State private var correctCount: Int = 0
+    @State private var wrongCount: Int = 0
+    @State private var attemptCount: Int = 0
+
+    @State private var selectedAnswer: Answer? = nil
+    @State private var showFeedback: Bool = false
+
     var body: some View {
         VStack(spacing: 24) {
             Text("Prime Checker")
@@ -19,19 +26,25 @@ struct ContentView: View {
                 .font(.system(size: 90, weight: .heavy))
 
             VStack(spacing: 16) {
-                answerRow(title: "Prime")
-                answerRow(title: "Not Prime")
+                answerRow(title: "Prime", answer: .prime)
+                answerRow(title: "Not Prime", answer: .notPrime)
             }
             .padding(.horizontal)
+
+            HStack(spacing: 18) {
+                Text("Correct: \(correctCount)")
+                Text("Wrong: \(wrongCount)")
+            }
+            .font(.subheadline)
 
             Spacer()
         }
         .padding()
     }
 
-    private func answerRow(title: String) -> some View {
+    private func answerRow(title: String, answer: Answer) -> some View {
         Button {
-            // No logic yet
+            submit(answer)
         } label: {
             Text(title)
                 .font(.title3)
@@ -43,9 +56,16 @@ struct ContentView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 16))
         }
         .buttonStyle(.plain)
+        .disabled(selectedAnswer != nil)
     }
 
-    // MARK: - Prime Check
+    // Submit
+    private func submit(_ answer: Answer) {
+        selectedAnswer = answer
+        showFeedback = true
+    }
+
+    // Prime Check
     private func isPrime(_ n: Int) -> Bool {
         if n < 2 { return false }
         if n == 2 { return true }
