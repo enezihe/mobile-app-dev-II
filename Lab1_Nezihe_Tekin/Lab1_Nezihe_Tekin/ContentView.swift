@@ -59,10 +59,24 @@ struct ContentView: View {
         .disabled(selectedAnswer != nil)
     }
 
-    // Submit
+    // MARK: - Submit (evaluate + score)
     private func submit(_ answer: Answer) {
         selectedAnswer = answer
         showFeedback = true
+        recordResult(isCorrect: isAnswerCorrect(answer))
+    }
+
+    private func recordResult(isCorrect: Bool) {
+        attemptCount += 1
+        if isCorrect { correctCount += 1 } else { wrongCount += 1 }
+    }
+
+    private func isAnswerCorrect(_ answer: Answer) -> Bool {
+        let prime = isPrime(currentNumber)
+        switch answer {
+        case .prime: return prime
+        case .notPrime: return !prime
+        }
     }
 
     // Prime Check
