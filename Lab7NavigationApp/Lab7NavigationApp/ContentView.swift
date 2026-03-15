@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    // books of the list
     let books = [
         "The Swift Programming Language",
         "Clean Code",
@@ -22,12 +21,21 @@ struct ContentView: View {
                     .padding(.horizontal)
                     .padding(.top)
                 
+                // Navigation to Info Screen
+                NavigationLink(destination: InfoView()) {
+                    Text("About This App")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.gray.opacity(0.2))
+                        .cornerRadius(8)
+                }
+                .padding(.horizontal)
+                
                 List(books, id: \.self) { book in
                     
                     NavigationLink(destination: DetailView(itemTitle: book)) {
                         Text(book)
                     }
-                    
                 }
             }
             .navigationTitle("Home")
