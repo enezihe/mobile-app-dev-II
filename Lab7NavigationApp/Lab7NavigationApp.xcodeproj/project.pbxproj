@@ -6,17 +6,22 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXFileReference section */
-		61196F032F673E610025ABDF /* Lab7NavigationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lab7NavigationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-/* End PBXFileReference section */
+/* Begin PBXBuildFile section */
+		61F15BDC2F6745EC00AB195F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F15BD82F6745EC00AB195F /* ContentView.swift */; };
+		61F15BDD2F6745EC00AB195F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F15BD92F6745EC00AB195F /* DetailView.swift */; };
+		61F15BDE2F6745EC00AB195F /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F15BDA2F6745EC00AB195F /* InfoView.swift */; };
+		61F15BDF2F6745EC00AB195F /* Lab7NavigationAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F15BDB2F6745EC00AB195F /* Lab7NavigationAppApp.swift */; };
+		61F15BE02F6745EC00AB195F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61F15BD72F6745EC00AB195F /* Assets.xcassets */; };
+/* End PBXBuildFile section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		61196F052F673E610025ABDF /* Lab7NavigationApp */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Lab7NavigationApp;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
+/* Begin PBXFileReference section */
+		61196F032F673E610025ABDF /* Lab7NavigationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Lab7NavigationApp.app; path = "/Users/nezihetekin/Desktop/gbc-term6/Mobile-App-Dev-II/mobile-app-dev-II/Lab7NavigationApp/build/Debug-iphoneos/Lab7NavigationApp.app"; sourceTree = "<absolute>"; };
+		61F15BD72F6745EC00AB195F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		61F15BD82F6745EC00AB195F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		61F15BD92F6745EC00AB195F /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		61F15BDA2F6745EC00AB195F /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		61F15BDB2F6745EC00AB195F /* Lab7NavigationAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab7NavigationAppApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		61196F002F673E610025ABDF /* Frameworks */ = {
@@ -32,17 +37,20 @@
 		61196EFA2F673E600025ABDF = {
 			isa = PBXGroup;
 			children = (
-				61196F052F673E610025ABDF /* Lab7NavigationApp */,
-				61196F042F673E610025ABDF /* Products */,
+				61F15BE12F6746B600AB195F /* View */,
+				61F15BDB2F6745EC00AB195F /* Lab7NavigationAppApp.swift */,
+				61F15BD72F6745EC00AB195F /* Assets.xcassets */,
 			);
 			sourceTree = "<group>";
 		};
-		61196F042F673E610025ABDF /* Products */ = {
+		61F15BE12F6746B600AB195F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				61196F032F673E610025ABDF /* Lab7NavigationApp.app */,
+				61F15BD82F6745EC00AB195F /* ContentView.swift */,
+				61F15BD92F6745EC00AB195F /* DetailView.swift */,
+				61F15BDA2F6745EC00AB195F /* InfoView.swift */,
 			);
-			name = Products;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,9 +67,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				61196F052F673E610025ABDF /* Lab7NavigationApp */,
 			);
 			name = Lab7NavigationApp;
 			packageProductDependencies = (
@@ -95,7 +100,7 @@
 			mainGroup = 61196EFA2F673E600025ABDF;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 61196F042F673E610025ABDF /* Products */;
+			productRefGroup = 61196EFA2F673E600025ABDF;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -109,6 +114,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61F15BE02F6745EC00AB195F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +125,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61F15BDC2F6745EC00AB195F /* ContentView.swift in Sources */,
+				61F15BDD2F6745EC00AB195F /* DetailView.swift in Sources */,
+				61F15BDE2F6745EC00AB195F /* InfoView.swift in Sources */,
+				61F15BDF2F6745EC00AB195F /* Lab7NavigationAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

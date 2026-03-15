@@ -1,10 +1,3 @@
-//
-//  Lab7NavigationAppApp.swift
-//  Lab7NavigationApp
-//
-//  Created by nbt on 2026-03-15.
-//
-
 import SwiftUI
 
 @main
