@@ -52,3 +52,11 @@ An iOS application built with **UIKit (Storyboard)** and **MapKit** that allows 
 3. **Remove a pin:** Tap near any existing pin to remove it
 4. **Get Route:** Tap the **Get Route** button to display the driving route A → B → C → A
 5. **Zoom:** Use the **+** and **−** buttons on the left side of the screen
+
+---
+
+## Screenshots
+
+| Triangle + Distances | Zoom Controls | Before Route | After Route |
+|---|---|---|---|
+| ![](screenshot1.png) | ![](screenshot2.png) | ![](screenshot3.png) | ![](screenshot4.png) |
