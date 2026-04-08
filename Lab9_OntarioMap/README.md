@@ -1,7 +1,4 @@
 # Lab 9 - Ontario Map Application
-**Course:** Mobile Application Development II — CRN-58080-202502  
-**Student:** Nezihe Tekin  
-**Due:** April 9, 2026
 
 ---
 
